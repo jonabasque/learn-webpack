@@ -1,5 +1,5 @@
 var http = require('http');
-var server = http.createServer();
+var server = http.createServer(); //si no pasamos la funcion al crearlo tenemos que usar el .on()
 
 module.exports = function(callback, port){
     //Si no nos pasan nada...
@@ -12,8 +12,10 @@ module.exports = function(callback, port){
     // si solo nos pasan el callback y no el puerto...
     } else if (typeof callback === 'function' && typeof port === 'undefined'){
         port = 8081;
+    }else if(typeof callback === 'function' && typeof port === 'number'){
+        console.log('bien pasados los argumentos :)');
     }else {
-        console.log('Pasa las cosas bien torpedo....');
+        console.log('Pasa las cosas bien torpedo :(');
     }
 
     console.log(callback);
