@@ -1,26 +1,41 @@
-var http = require('http');
-var fs = require('fs');
-var server = require('./server');
-/*
-fs.readFile('./index.html', function (err, html) {
-    if (err) {
-        throw err;
-    }
-    http.createServer(function(request, response) {
-        response.writeHeader(200, {"Content-Type": "text/html"});
-        response.write(html);
-        response.end();
-    }).listen(8082);
-});
-*/
+var express = require('express');
+var app = express();
 
-fs.readFile('./index.html', function (err, html) {
-    if (err) {
-        throw err;
-    }
-    server(function(request, response) {
-        response.writeHeader(200, {"Content-Type": "text/html"});
-        response.write(html);
-        response.end();
-    }, 8082);
+var routes = require('./server/routes');
+
+app.use(express.static('./assets'));
+app.use('/', routes.router);
+
+module.exports = app;
+
+app.listen(8083, function () {
+  console.log('Example app listening on port 8083!');
 });
+
+/*
+var express = require('express');
+var app = express();
+
+app.use(express.static('./assets'));
+
+app.get('/', function (req, res, next) {
+
+  var options = {
+    root: __dirname + '/assets/',
+    dotfiles: 'allow',
+    headers: {
+        'x-timestamp': Date.now(),
+        'x-sent': true
+    }
+  };
+  res.type('html');
+  //var fileName = req.params.name;
+  res.sendFile('index.html', options, function (err) {
+    if (err) {
+      next(err);
+    } else {
+      console.log('Sent!!');
+    }
+  });
+
+});*/
