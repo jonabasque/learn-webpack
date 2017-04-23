@@ -18,6 +18,11 @@ module.exports = {
                 loader: 'babel-loader',
                 include: path.join(__dirname, 'assets', 'js', 'src'), //solo pasarán al loader los archivos .js de este directorio
                 //exclude: /node_modules/ //desde la raiz del proyecto excluira lo que indique esta exReg.
+            },
+            {
+                test: /\.css$/,
+                loader: 'css-loader',
+
             }
         ]
     }
