@@ -33,7 +33,7 @@ module.exports = {
     },
     plugins: [
         new ExtractTextPlugin({
-            filename: 'style.css'
+            filename: '[name].css'
         })
     ]
 };
