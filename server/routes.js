@@ -6,11 +6,6 @@ var router = express.Router();
 //REQUERIMOS MODULOS PROPIOS
 
 //RUTAS
-router.route('/')
-	.get(function(req, res){
-		console.log('cliente servido desde ruta / tipo get() !');//TODO: no aparece en consola.
-		//res.sendFile('public/index.html');
-	});
 
 //exportamos el enrutador
 module.exports.router = router;

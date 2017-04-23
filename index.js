@@ -3,12 +3,13 @@ var app = express();
 
 var routes = require('./server/routes');
 
+//TODO: Este middleware habilita todo los archivos de assets o manda todo el directorio. Además la app ya acepta la petición / y manda el index.html, el resto han de ser relativas.
+//Esto esá bien para usar un framework de cliente como Angular, Ember, etc.. pero para Ghost que quiere enviar una página por ruta no.
 app.use(express.static('./assets'));
-app.use('/', routes.router);
 
 module.exports = app;
 
-app.listen(8083, function () {
+app.listen(8088, function () {
   console.log('Example app listening on port 8083!');
 });
 
