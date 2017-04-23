@@ -1,9 +1,10 @@
 var path = require('path');
 
 module.exports = {
+    context: path.join(__dirname, 'assets', 'js', 'src'),
     entry: {
-        index : path.join(__dirname, 'assets', 'js', 'src', 'index', 'index.js'),
-        groups: path.join(__dirname, 'assets', 'js', 'src', 'groups', 'groups.js')
+        index : './index/index.js',
+        groups: './groups/groups.js'
     },
     output: {
         path: path.join(__dirname, 'assets', 'js', 'dist'),
