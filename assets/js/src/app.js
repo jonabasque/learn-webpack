@@ -6,3 +6,7 @@ header.innerHTML = title;
 fgjfjfjfhyjfhjfhj
 fgjfhjfhyjsfhjghsdjkdghkjk
 jkjkghkgkdjgkljgkjgkjgkjgk*/
+
+if(module.hot) {
+    module.hot.accept();
+}

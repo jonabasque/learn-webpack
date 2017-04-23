@@ -1,5 +1,5 @@
 var course = {
-    title: 'Webpack'
+    title: 'Webpack2'
 };
 var title = `${course.title} learning with CommonJS`;
 
