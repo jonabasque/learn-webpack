@@ -58,3 +58,4 @@ typings/
 .env
 
 assets/js/dist/
+assets/html/dist/

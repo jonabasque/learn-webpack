@@ -7,8 +7,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
     context: path.join(__dirname, 'assets'),
     entry: {
-        index : './js/src/index/index.js',
-        groups: './js/src/groups/groups.js'
+        'index' : './js/src/index/index.js',
+        'groups': './js/src/groups/groups.js'
     },
     output: {
         path: path.join(__dirname, 'assets'), //ha de ser absoluta.
@@ -36,19 +36,21 @@ module.exports = {
     plugins: [
         new HtmlPlugin({
             title: 'Goups page',
-            filename: 'groups.html',
-            template: './templates/groups.html',
+            filename: 'html/dist/groups.html',
+            template: './html/src/groups.ejs',
             hash: true
 
         }),
         new HtmlPlugin({
             title: 'Contact page',
-            filename: 'contact.html',
-            template: './templates/contact.html'
+            filename: 'html/dist/contact.html',
+            template: './html/src/contact.ejs',
+            hash: true
         }),
         new HtmlPlugin({
-            filename: 'index.html',
-            template: './templates/index.html'
+            filename: 'html/dist/index.html',
+            template: './html/src/index.ejs',
+            hash: true
         }),
         new ExtractTextPlugin({
             filename: 'css/[name].css',
