@@ -4,15 +4,15 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 
 module.exports = {
-    context: path.join(__dirname, 'assets', 'js', 'src'),
+    context: path.join(__dirname, 'assets'),
     entry: {
-        index : './index/index.js',
-        groups: './groups/groups.js'
+        index : './js/src/index/index.js',
+        groups: './js/src/groups/groups.js'
     },
     output: {
-        path: path.join(__dirname, 'assets', 'js', 'dist'),
-        //publicPath: 'assets',
-        filename: '[name].bundle.js'
+        path: path.join(__dirname, 'assets'), //ha de ser absoluta.
+        publicPath: 'assets/js', //TODO: para que sirve este??
+        filename: 'js/dist/[name].bundle.js'
     },
     module:{
         loaders: [
@@ -26,14 +26,16 @@ module.exports = {
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: ['css-loader']
+                    use: ['css-loader'],
+                    publicPath: 'assets/css'
                 })
             }
         ]
     },
     plugins: [
         new ExtractTextPlugin({
-            filename: '[name].css'
+            filename: 'css/[name].css',
+            allChunks: true
         })
     ]
 };
