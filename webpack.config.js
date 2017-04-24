@@ -38,19 +38,24 @@ module.exports = {
             title: 'Goups page',
             filename: 'html/dist/groups.html',
             template: './html/src/groups.ejs',
-            hash: true
+            hash: true,
+            inject: true,
+            chunks: ['groups']
 
         }),
         new HtmlPlugin({
             title: 'Contact page',
             filename: 'html/dist/contact.html',
             template: './html/src/contact.ejs',
-            hash: true
+            hash: true,
+            inject: false
         }),
         new HtmlPlugin({
             filename: 'html/dist/index.html',
             template: './html/src/index.ejs',
-            hash: true
+            hash: true,
+            inject: true,
+            chunks: ['groups']
         }),
         new ExtractTextPlugin({
             filename: 'css/[name].css',
