@@ -16,16 +16,16 @@ module.exports = {
         filename: 'js/dist/[name].bundle.js'
     },
     module:{
-        loaders: [
+        rules: [
             {
                 test: /\.js$/, //si la expresión regular devuelve true, por lo que lo va a usar este cargador .
-                loader: 'babel-loader',
+                use: 'babel-loader',
                 include: path.join(__dirname, 'assets', 'js', 'src'), //solo pasarán al loader los archivos .js de este directorio
                 //exclude: /node_modules/ //desde la raiz del proyecto excluira lo que indique esta exReg.
             },
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract({
+                use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: ['css-loader'],
                     //publicPath: 'assets/css'
