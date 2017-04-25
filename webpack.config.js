@@ -55,7 +55,7 @@ module.exports = {
             template: './html/src/index.ejs',
             hash: true,
             inject: true,
-            chunks: ['groups']
+            chunks: ['index']
         }),
         new ExtractTextPlugin({
             filename: 'css/[name].css',
