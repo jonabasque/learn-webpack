@@ -15,6 +15,16 @@ module.exports = {
         //publicPath: 'assets/js', //TODO: para que sirve este??
         filename: 'js/dist/[name].bundle.js'
     },
+    devServer: {
+        contentBase: [ path.join(__dirname, "assets/html/dist"),
+                       path.join(__dirname, "assets/css/dist"),
+                       path.join(__dirname, "assets/js/dist")],
+        compress: true,
+        stats: 'errors-only',
+        port: 9000,
+        watchContentBase: true,
+        open: true
+    },
     module:{
         rules: [
             {
