@@ -1,4 +1,5 @@
 var path = require('path');
+var webpack = require('webpack');
 const HtmlPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 //const extractCSS = new ExtractTextPlugin('assets/css/[name].css');
@@ -16,14 +17,20 @@ module.exports = {
         filename: 'js/dist/[name].bundle.js'
     },
     devServer: {
+        //contentBase: false, //TOKNOW: FALSE ??
         contentBase: [ path.join(__dirname, "assets/html/dist"),
                        path.join(__dirname, "assets/css/dist"),
                        path.join(__dirname, "assets/js/dist")],
         compress: true,
         stats: 'errors-only',
         port: 9000,
-        watchContentBase: true,
-        open: true
+        watchContentBase: true, //TOKNOW: IS NOT NECESARY ??
+        open: true //abre el navegador al iniciar el dev-server no al rebuild
+    },
+    resolve: {
+        alias: {
+            'css' : path.join(__dirname, 'assets', 'css', 'src')
+        }
     },
     module:{
         rules: [
@@ -68,7 +75,7 @@ module.exports = {
             chunks: ['index']
         }),
         new ExtractTextPlugin({
-            filename: 'css/[name].css',
+            filename: 'css/dist/[name].css',
             allChunks: true
         })
     ]
