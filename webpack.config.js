@@ -4,7 +4,6 @@ const HtmlPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 //const extractCSS = new ExtractTextPlugin('assets/css/[name].css');
 
-
 module.exports = {
     context: path.join(__dirname, 'assets'),
     entry: {
@@ -34,6 +33,10 @@ module.exports = {
     },
     module:{
         rules: [
+            {
+                test: /\.hbs$/,
+                loader: "handlebars-loader"
+            },
             {
                 test: /\.js$/, //si la expresión regular devuelve true, por lo que lo va a usar este cargador .
                 use: 'babel-loader',
