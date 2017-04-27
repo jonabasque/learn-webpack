@@ -44,10 +44,6 @@ module.exports = {
     module:{
         rules: [
             {
-                test: /\.hbs$/,
-                loader: "handlebars-loader"
-            },
-            {
                 test: /\.js$/, //si la expresión regular devuelve true, por lo que lo va a usar este cargador .
                 use: 'babel-loader',
                 include: path.join(__dirname, 'src', 'client', 'js'), //solo pasarán al loader los archivos .js de este directorio
@@ -56,13 +52,17 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: cssConfig
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: ['file-loader']
             }
         ]
     },
     plugins: [
         new HtmlPlugin({
             title: 'Goups page',
-            filename: 'groups.hbs', //relative to output.path attr
+            filename: 'groups.html', //relative to output.path attr
             template: './html/groups.ejs', //relative to context attr
             hash: true,
             inject: true,
@@ -71,13 +71,13 @@ module.exports = {
         }),
         new HtmlPlugin({
             title: 'Contact page',
-            filename: 'contact.hbs', //relative to output.path attr
+            filename: 'contact.html', //relative to output.path attr
             template: './html/contact.ejs', //relative to context attr
             hash: true,
             inject: false
         }),
         new HtmlPlugin({
-            filename: 'index.hbs', //relative to output.path attr
+            filename: 'index.html', //relative to output.path attr
             template: './html/index.ejs', //relative to context attr
             hash: true,
             inject: true,
