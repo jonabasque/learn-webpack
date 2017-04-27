@@ -4,6 +4,16 @@ const HtmlPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 //const extractCSS = new ExtractTextPlugin('assets/css/[name].css');
 
+var isProd = process.env.NODE_ENV === 'production'; //true or false
+var cssDev = ['style-loader', 'css-loader'];
+var cssProd =  ExtractTextPlugin.extract({
+    fallback: 'style-loader',
+    use: ['css-loader'],
+    //publicPath: 'assets/css'
+});
+
+var cssConfig = isProd ? cssProd : cssDev ;
+
 module.exports = {
     context: path.join(__dirname, 'assets'),
     entry: {
@@ -22,6 +32,8 @@ module.exports = {
                        path.join(__dirname, "assets/js/dist")],
         compress: true,
         stats: 'errors-only',
+        hot: true,
+        // enable HMR on the server
         port: 9000,
         watchContentBase: true, //TOKNOW: IS NOT NECESARY ??
         open: true //abre el navegador al iniciar el dev-server no al rebuild
@@ -45,11 +57,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: ['css-loader'],
-                    //publicPath: 'assets/css'
-                })
+                use: cssConfig
             }
         ]
     },
@@ -79,7 +87,12 @@ module.exports = {
         }),
         new ExtractTextPlugin({
             filename: 'css/dist/[name].css',
+            disable: !isProd,
             allChunks: true
-        })
+        }),
+        new webpack.HotModuleReplacementPlugin(),
+        // enable HMR globally
+        new webpack.NamedModulesPlugin(),
+        // prints more readable module names in the browser console on HMR updates
     ]
 };
