@@ -57,6 +57,4 @@ typings/
 # dotenv environment variables file
 .env
 
-assets/js/dist/
-assets/html/dist/
-assets/css/dist/
+dist/

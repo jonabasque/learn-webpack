@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "prod": "npm run clean && NODE_ENV=production webpack -p",
-    "clean": "rm -rf ./assets/js/dist/* && rm -rf ./assets/html/dist/* && rm -rf ./assets/css/dist/*"
+    "clean": "rm -rf ./dist/* "
   },
   "repository": {
     "type": "git",
