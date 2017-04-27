@@ -55,7 +55,7 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|gif)$/,
-                use: ['file-loader']
+                use: ['file-loader?name=[hash].[ext]&outputPath=assets/img/'] //TOKNOW: no substituye el outputPath ? parece que es relativo a el.
             }
         ]
     },
